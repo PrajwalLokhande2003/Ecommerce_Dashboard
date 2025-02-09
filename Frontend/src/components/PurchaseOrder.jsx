@@ -15,7 +15,7 @@ function PurchaseOrder() {
     const [click, setClick] = useState(1)
     const [val, setval] = useState('10')
 
-    // const BASE_URL = process.env.REACT_APP_BASE_URL
+    const OTHER_URL = process.env.REACT_APP_OTHER_URL
 
     useEffect(() => {
             getItem()
@@ -26,7 +26,7 @@ function PurchaseOrder() {
     async function getItem() {
         setLoadClass('d-flex')
 
-        await axios.get(`https://dummyjson.com/users/`).then(
+        await axios.get(`${OTHER_URL}/users/`).then(
             (res) => {
                 if (res) {
                     setLoadClass('d-none')

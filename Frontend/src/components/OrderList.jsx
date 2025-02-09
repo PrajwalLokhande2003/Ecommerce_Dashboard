@@ -14,6 +14,8 @@ function OrderList() {
     const [val,setval] = useState('10')
     const title = 'Order List'
 
+    const OTHER_URL = process.env.REACT_APP_OTHER_URL
+
     useEffect(()=>{
         getOrder()
         curr>1?click===curr?setNext('disabled'):setNext(''):click===1?setNext('disabled'):setNext('')
@@ -23,7 +25,7 @@ function OrderList() {
 
     async function getOrder(){
         setLoadClass('d-flex')
-        await axios.get('https://dummyjson.com/carts').then(
+        await axios.get(`${OTHER_URL}/carts`).then(
             (res)=>{
                 if(res){
                     setCurr(Math.floor(res.data.carts.length/val)<res.data.carts.length/val?Math.floor(res.data.carts.length/val)+1:res.data.carts.length/val)
