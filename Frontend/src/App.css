@@ -12223,7 +12223,6 @@ a{
     top: 0;
     z-index: 5;
     font-size: 2.5rem;
-    overflow-x: scroll;
 }
 
 .burger{

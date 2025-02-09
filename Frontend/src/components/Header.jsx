@@ -59,9 +59,10 @@ function Header(props) {
 
     }
 
-
-
-
+    function logOut(){
+        localStorage.clear()
+        window.location.reload()
+    }
 
 
     function menu() {
@@ -153,7 +154,7 @@ function Header(props) {
                                         <div className="mb-2"><i class="bi bi-question-circle"></i> Help</div>
 
                                     </div>
-                                    <div className=" card-footer d-flex justify-content-center text-danger cursor-pointer"><i class="bi bi-box-arrow-left px-2"></i>Logout</div>
+                                    <div className=" card-footer d-flex justify-content-center text-danger cursor-pointer" onClick={logOut}><i class="bi bi-box-arrow-left px-2"></i>Logout</div>
                                 </div>
                             </div>
                         </div>
