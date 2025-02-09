@@ -35,7 +35,7 @@ function Nav() {
     return (
         <>
         {localStorage.getItem('user')?<>
-            <div className={` Nav_bar ${Navclass.navElement} overflow-scroll `}>
+            <div className={` Nav_bar ${Navclass.navElement} overflow-y-scroll overflow-x-hidden `}>
                 <div className="">
                 
                     <div className={`bar`}>

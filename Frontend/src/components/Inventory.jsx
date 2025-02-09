@@ -27,7 +27,7 @@ const Inventory = () => {
 
         await axios.get(`${BASE_URL}/warehouse-list`).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setCurr(Math.floor(res.data.length / val) < res.data.length / val ? Math.floor(res.data.length / val) + 1 : res.data.length / val)
                     setList(res.data.splice(((click - 1) * val), val))
                     setLoadClass('d-none')
@@ -140,7 +140,7 @@ const Inventory = () => {
                             <div className=" table-responsive">
                                 <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
                                     <thead>
-                                        <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                        <tr className="headig-tr fs-3 fw-bold  align-middle ">
                                             <th>Warehouse ID</th>
                                             <th>Warehouse Name</th>
                                             <th>Location</th>

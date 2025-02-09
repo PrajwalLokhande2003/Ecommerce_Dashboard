@@ -32,7 +32,7 @@ const ProductList = () => {
 
         await axios.get(`${BASE_URL}/product-list`).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setCurr(Math.floor(res.data.length/val)<res.data.length/val?Math.floor(res.data.length/val)+1:res.data.length/val)
                     setProduct(res.data.splice(((click-1)*val),val))
                     setLoadClass('d-none')
@@ -92,7 +92,7 @@ const ProductList = () => {
                             <div className=" table-responsive">
                                 <table className="table fs-3 align-middle mb-0 table-hover table-centered">
                                     <thead>
-                                        <tr className="headig-tr fw-bold bg-light-subtle ">
+                                        <tr className="headig-tr fw-bold ">
                                             <th>Product Name & Image</th>
                                             <th>Tag Number</th>
                                             <th>Size</th>

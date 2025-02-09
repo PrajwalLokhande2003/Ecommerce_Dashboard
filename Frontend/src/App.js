@@ -60,8 +60,8 @@ function App() {
 
     <Route path='/creator' element={<Creator/>} />
     </Route>
-    <Route path='signin' element={<SignIn/>}/>
-    <Route path='signup' element={<SignUp/>}/>
+    <Route path='/signin' element={<SignIn/>}/>
+    <Route path='/signup' element={<SignUp/>}/>
     </Routes>
     </BrowserRouter>
     </>

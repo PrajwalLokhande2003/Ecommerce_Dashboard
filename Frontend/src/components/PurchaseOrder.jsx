@@ -28,7 +28,7 @@ function PurchaseOrder() {
 
         await axios.get(`${OTHER_URL}/users/`).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setLoadClass('d-none')
                     setCurr(Math.floor(res.data.users.length/val)<res.data.users.length/val?Math.floor(res.data.users.length/val)+1:res.data.users.length/val)
                     setList(res.data.users.splice(((click-1)*val),val))
@@ -142,7 +142,7 @@ function PurchaseOrder() {
                             <div className=" table-responsive">
                                 <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
                                     <thead>
-                                        <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                        <tr className="headig-tr fs-3 fw-bold align-middle ">
                                             <th>Customer Name</th>
                                             <th>Email</th>
                                             <th>Order Date</th>

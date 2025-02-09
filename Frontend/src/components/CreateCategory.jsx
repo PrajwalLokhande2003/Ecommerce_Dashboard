@@ -12,7 +12,7 @@ function CreateCategory() {
     const [startingPrice, setStartingPrice] = useState('')
     const [loadClass, setLoadClass] = useState('d-none')
 
-    const title = 'Create product'
+    const title = 'Create Categorie'
 
     const BASE_URL = process.env.REACT_APP_BASE_URL
     const creatorId = JSON.parse(localStorage.getItem('user')).id
@@ -89,7 +89,7 @@ function CreateCategory() {
                                     </div>
                                     <div class="card-body">
                                         <label for="add" className="upload form-control" >Upload</label>
-                                        <input type="file" className=" invisible d-none" id="add" onChange={(e) => { setDisplay(URL.createObjectURL(e.target.files[0])); setImage(e.target.files[0]) }} />
+                                        <input type="file" className=" invisible d-none" accept="image/*" id="add" onChange={(e) => { setDisplay(URL.createObjectURL(e.target.files[0])); setImage(e.target.files[0]) }} />
                                     </div>
                                 </div>
                             </div>

@@ -30,9 +30,11 @@ function OrderTransection() {
 
         await axios.get(`${BASE_URL}/transection-list`).then(
             (res) => {
-                setCurr(Math.floor(res.data.length/val)<res.data.length/val?Math.floor(res.data.length/val)+1:res.data.length/val)
+                if(res.data){
+                    setCurr(Math.floor(res.data.length/val)<res.data.length/val?Math.floor(res.data.length/val)+1:res.data.length/val)
                     setList(res.data.splice(((click-1)*val),val))
                     setLoadClass('d-none')
+                }
             }).catch(
                 (err) => {
                     if (err) {
@@ -71,7 +73,7 @@ function OrderTransection() {
                             <div className=" table-responsive">
                                 <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
                                     <thead>
-                                        <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                        <tr className="headig-tr fs-3 fw-bold align-middle ">
                                             <th>ID</th>
                                             <th>Order By</th>
                                             <th>Items</th>

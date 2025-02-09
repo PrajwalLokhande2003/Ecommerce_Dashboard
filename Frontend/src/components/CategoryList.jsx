@@ -28,7 +28,7 @@ function CategoryList() {
 
         await axios.get(`${BASE_URL}/categorie-list`).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setCurr(Math.floor(res.data.length/val)<res.data.length/val?Math.floor(res.data.length/val)+1:res.data.length/val)
                     setList(res.data.splice(((click-1)*val),val))
                     setLoadClass('d-none')
@@ -113,7 +113,7 @@ function CategoryList() {
                             <div className=" table-responsive">
                                 <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
                                     <thead>
-                                        <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                        <tr className="headig-tr fs-3 fw-bold align-middle ">
                                             <th>Categories</th>
                                             <th>Starting Price</th>
                                             <th>Create by</th>

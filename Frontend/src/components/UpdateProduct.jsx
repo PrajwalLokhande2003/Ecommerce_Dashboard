@@ -91,7 +91,7 @@ function UpdateProduct() {
             }
         }).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setLoadClass('d-none')
                     navigate('/product')
                 }
@@ -128,7 +128,7 @@ function UpdateProduct() {
             }
         }).then(
             (res) => {
-                if (res) {
+                if (res.data) {
                     setLoadClass('d-none')
                     navigate(`/product`)
                 }

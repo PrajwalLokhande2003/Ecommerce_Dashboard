@@ -19,7 +19,7 @@ function OrderTracking() {
         setLoadClass('d-flex')
         await axios.get(`https://dummyjson.com/carts`).then(
             (res)=>{
-                if(res){
+                if(res.data){
                     setProduct(res.data.carts[param.id-1].products)
                     if(res.data){
                         setLoadClass('d-none')
@@ -42,10 +42,11 @@ function OrderTracking() {
                 <div className=" container-fluid">
                     <div className="row">
                         <div className="card">
-                            <div className="row card-body">
-                                <div className="col-2">Track Order</div>
-                                <div className=" offset-1 col-4">
-                                    <input type="text" className="search w-100 form-control" placeholder="Enter Order Id" />
+                        <div class="card-header align-items-center gap-1 fs-3">
+                            <div className=" d-flex justify-content-between gap-3">
+                                <div className=" card-title align-items-center d-flex">Order Id</div>
+                                <div className="align-items-center d-flex w-50"><input type="text" className="search w-100" placeholder="Enter Order Id" />
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +60,7 @@ function OrderTracking() {
                                 <div className=" table-responsive">
                                     <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
                                         <thead>
-                                            <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                            <tr className="headig-tr fs-3 fw-bold align-middle ">
                                                 <th>Product Name & Image</th>
                                                 <td>Product Id</td>
                                                 <td>Price</td>

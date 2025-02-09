@@ -7,28 +7,30 @@ function PurchaseReturn() {
 
     const [list, setList] = useState([])
     const [loadClass, setLoadClass] = useState('d-none')
-    const [prev,setPrev] = useState('')
-    const [next,setNext] = useState('')
-    const [curr,setCurr] = useState(Number)
-    const [click,setClick] = useState(1)
-    const [val,setval] = useState('10')
-    
+    const [prev, setPrev] = useState('')
+    const [next, setNext] = useState('')
+    const [curr, setCurr] = useState(Number)
+    const [click, setClick] = useState(1)
+    const [val, setval] = useState('10')
+
     const BASE_URL = process.env.REACT_APP_BASE_URL
 
-    useEffect(()=>{
+    useEffect(() => {
         getOrder()
-        curr>1?click===curr?setNext('disabled'):setNext(''):click===1?setNext('disabled'):setNext('')
-        click===1?setPrev('disabled'):setPrev('')
-    },[click,curr,val])
-    
+        curr > 1 ? click === curr ? setNext('disabled') : setNext('') : click === 1 ? setNext('disabled') : setNext('')
+        click === 1 ? setPrev('disabled') : setPrev('')
+    }, [click, curr, val])
 
-    async function getOrder(){
+
+    async function getOrder() {
         setLoadClass('d-flex')
         await axios.get(`${BASE_URL}/transection-list`).then(
             (res) => {
-                setCurr(Math.floor(res.data.length/val)<res.data.length/val?Math.floor(res.data.length/val)+1:res.data.length/val)
-                    setList(res.data.splice(((click-1)*val),val))
+                if (res.data) {
+                    setCurr(Math.floor(res.data.length / val) < res.data.length / val ? Math.floor(res.data.length / val) + 1 : res.data.length / val)
+                    setList(res.data.splice(((click - 1) * val), val))
                     setLoadClass('d-none')
+                }
             }).catch(
                 (err) => {
                     if (err) {
@@ -117,26 +119,26 @@ function PurchaseReturn() {
                     </div>
 
                     <div class="card  mb-3" >
-                    <div class="card-header align-items-center gap-1 fs-3">
+                        <div class="card-header align-items-center gap-1 fs-3">
                             <div className=" d-flex justify-content-between gap-3">
                                 <div className=" card-title align-items-center d-flex">All Order Item</div>
                                 <div className="align-items-center d-flex w-75"><input type="text" className="search w-100" placeholder="Search" /></div>
                                 <div className="align-items-center d-flex">
 
-                                <select className=" border-none btn-outline-warning" aria-label="Default select example" style={{height:'fit-content'}} onChange={(e) => setval(e.target.value)}>
-                                                <option value="5">5</option>
-                                                <option value="10" selected>10</option>
-                                                <option value="15">15</option>
-                                                <option value="30">30</option>
-                                </select>
+                                    <select className=" border-none btn-outline-warning" aria-label="Default select example" style={{ height: 'fit-content' }} onChange={(e) => setval(e.target.value)}>
+                                        <option value="5">5</option>
+                                        <option value="10" selected>10</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body ">
                             <div className=" table-responsive">
                                 <table className="table align-middle d-table align-items-center fs-3 mb-0 table-hover table-centered">
-                                <thead>
-                                        <tr className="headig-tr fs-3 fw-bold bg-light-subtle align-middle ">
+                                    <thead>
+                                        <tr className="headig-tr fs-3 fw-bold align-middle ">
                                             <th>ID</th>
                                             <th>Order By</th>
                                             <th>Items</th>

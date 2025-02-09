@@ -10,9 +10,10 @@ function Header(props) {
     const [info, setInfo] = useState('')
     const [loadClass, setLoadClass] = useState('d-none')
     const BASE_URL = process.env.REACT_APP_BASE_URL
+    const user = JSON.parse(localStorage.getItem('user'))
     const id = JSON.parse(localStorage.getItem('user')).id
 
-    const src = info.image
+    const src = user.name==='Guest'?'':info.image
 
     const [theme, setTheme] = useState(sessionStorage.length > 0 ? JSON.parse(sessionStorage.getItem('themes')).theme : 'dark')
 
@@ -146,7 +147,7 @@ function Header(props) {
 
 
                                 <div className={`card user position-absolute top-100 end-0 px-2 fs-3 ${show} `} style={show === 'show' ? { background: 'var(--bs-main-nav-bg)', display: 'block' } : {}}>
-                                    <div className="card-header">Welcome {info.name}</div>
+                                    <div className="card-header">Welcome {user.name}</div>
                                     <div className="card-body d-grid justify-content-center cursor-pointer">
                                         <div className="mb-2"><Link to={'/profile'}><i class="bi bi-person-circle"></i> Profile</Link></div>
                                         <div className="mb-2"><i class="bi bi-question-circle"></i> Help</div>
